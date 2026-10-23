@@ -4,9 +4,8 @@ API REST feita em C# com .NET 10, Minimal API e Entity Framework Core para contr
 
 ## Integrantes
 
-- Nome completo - RM00000
-- Nome completo - RM00000
-- Nome completo - RM00000
+- Caio Rasuck Barbosa - RM 93645
+- Arthur Menezes - RM 93025
 
 ## Contexto
 
