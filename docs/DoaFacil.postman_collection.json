@@ -1,0 +1,127 @@
+{
+  "info": {
+    "name": "DoaFácil API",
+    "description": "Coleção para testar todos os endpoints da DoaFácil API.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:5066/api" }
+  ],
+  "item": [
+    {
+      "name": "Pontos de Coleta",
+      "item": [
+        {
+          "name": "Listar pontos de coleta",
+          "request": { "method": "GET", "url": "{{baseUrl}}/pontos-coleta" }
+        },
+        {
+          "name": "Filtrar pontos por cidade e situação",
+          "request": { "method": "GET", "url": "{{baseUrl}}/pontos-coleta?cidade=camp&ativo=true" }
+        },
+        {
+          "name": "Buscar ponto de coleta por id",
+          "request": { "method": "GET", "url": "{{baseUrl}}/pontos-coleta/1" }
+        },
+        {
+          "name": "Listar doações do ponto de coleta",
+          "request": { "method": "GET", "url": "{{baseUrl}}/pontos-coleta/1/doacoes" }
+        },
+        {
+          "name": "Cadastrar ponto de coleta",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/pontos-coleta",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"Escola Viva\",\n  \"endereco\": \"Rua A, 10 - Gonzaga\",\n  \"cidade\": \"Santos\",\n  \"uf\": \"SP\",\n  \"telefone\": \"(13) 9999-0000\",\n  \"ativo\": true\n}"
+            }
+          }
+        },
+        {
+          "name": "Cadastrar ponto de coleta (inválido - 400)",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/pontos-coleta",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"A\",\n  \"endereco\": \"\",\n  \"cidade\": \"\",\n  \"uf\": \"SPX\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Atualizar ponto de coleta",
+          "request": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/pontos-coleta/3",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"Escola Viva\",\n  \"endereco\": \"Rua A, 10 - Gonzaga\",\n  \"cidade\": \"Santos\",\n  \"uf\": \"SP\",\n  \"telefone\": \"(13) 9999-1111\",\n  \"ativo\": false\n}"
+            }
+          }
+        },
+        {
+          "name": "Remover ponto de coleta",
+          "request": { "method": "DELETE", "url": "{{baseUrl}}/pontos-coleta/3" }
+        }
+      ]
+    },
+    {
+      "name": "Doações",
+      "item": [
+        {
+          "name": "Listar doações",
+          "request": { "method": "GET", "url": "{{baseUrl}}/doacoes" }
+        },
+        {
+          "name": "Filtrar doações por status e categoria",
+          "request": { "method": "GET", "url": "{{baseUrl}}/doacoes?status=Recebida&categoria=Alimento" }
+        },
+        {
+          "name": "Buscar doação por id",
+          "request": { "method": "GET", "url": "{{baseUrl}}/doacoes/1" }
+        },
+        {
+          "name": "Registrar doação",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/doacoes",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nomeDoador\": \"Ana Souza\",\n  \"descricao\": \"Kits de higiene pessoal\",\n  \"categoria\": \"Higiene\",\n  \"quantidade\": 30,\n  \"pontoColetaId\": 1\n}"
+            }
+          }
+        },
+        {
+          "name": "Atualizar doação",
+          "request": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/doacoes/3",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nomeDoador\": \"Ana Souza\",\n  \"descricao\": \"Kits de higiene pessoal e shampoos\",\n  \"categoria\": \"Higiene\",\n  \"quantidade\": 40,\n  \"pontoColetaId\": 2\n}"
+            }
+          }
+        },
+        {
+          "name": "Atualizar status da doação",
+          "request": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/doacoes/3/status",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"status\": \"EmTriagem\"\n}" }
+          }
+        },
+        {
+          "name": "Remover doação",
+          "request": { "method": "DELETE", "url": "{{baseUrl}}/doacoes/3" }
+        }
+      ]
+    }
+  ]
+}

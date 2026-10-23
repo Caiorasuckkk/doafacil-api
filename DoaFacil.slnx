@@ -1,0 +1,5 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/DoaFacil.Api/DoaFacil.Api.csproj" />
+  </Folder>
+</Solution>

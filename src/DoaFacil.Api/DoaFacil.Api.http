@@ -1,0 +1,83 @@
+@baseUrl = http://localhost:5066/api
+
+### Listar pontos de coleta
+GET {{baseUrl}}/pontos-coleta
+
+### Filtrar pontos de coleta por cidade e situação
+GET {{baseUrl}}/pontos-coleta?cidade=camp&ativo=true
+
+### Buscar ponto de coleta por id
+GET {{baseUrl}}/pontos-coleta/1
+
+### Listar doações de um ponto de coleta
+GET {{baseUrl}}/pontos-coleta/1/doacoes
+
+### Cadastrar ponto de coleta
+POST {{baseUrl}}/pontos-coleta
+Content-Type: application/json
+
+{
+  "nome": "Escola Viva",
+  "endereco": "Rua A, 10 - Gonzaga",
+  "cidade": "Santos",
+  "uf": "SP",
+  "telefone": "(13) 9999-0000",
+  "ativo": true
+}
+
+### Atualizar ponto de coleta
+PUT {{baseUrl}}/pontos-coleta/3
+Content-Type: application/json
+
+{
+  "nome": "Escola Viva",
+  "endereco": "Rua A, 10 - Gonzaga",
+  "cidade": "Santos",
+  "uf": "SP",
+  "telefone": "(13) 9999-1111",
+  "ativo": false
+}
+
+### Remover ponto de coleta
+DELETE {{baseUrl}}/pontos-coleta/3
+
+### Listar doações (filtros opcionais: status, categoria, pontoColetaId)
+GET {{baseUrl}}/doacoes?status=Recebida
+
+### Buscar doação por id
+GET {{baseUrl}}/doacoes/1
+
+### Registrar doação
+POST {{baseUrl}}/doacoes
+Content-Type: application/json
+
+{
+  "nomeDoador": "Ana Souza",
+  "descricao": "Kits de higiene pessoal",
+  "categoria": "Higiene",
+  "quantidade": 30,
+  "pontoColetaId": 1
+}
+
+### Atualizar doação
+PUT {{baseUrl}}/doacoes/3
+Content-Type: application/json
+
+{
+  "nomeDoador": "Ana Souza",
+  "descricao": "Kits de higiene pessoal e shampoos",
+  "categoria": "Higiene",
+  "quantidade": 40,
+  "pontoColetaId": 2
+}
+
+### Atualizar status da doação
+PATCH {{baseUrl}}/doacoes/3/status
+Content-Type: application/json
+
+{
+  "status": "EmTriagem"
+}
+
+### Remover doação
+DELETE {{baseUrl}}/doacoes/3
